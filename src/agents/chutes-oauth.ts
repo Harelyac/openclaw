@@ -136,11 +136,7 @@ export async function exchangeChutesCodeForTokens(params: {
     throw new Error(`Chutes token exchange failed: ${text}`);
   }
 
-  const data = (await response.json()) as {
-    access_token?: string;
-    refresh_token?: string;
-    expires_in?: number;
-  };
+  const data = (await response.json()) as any;
 
   const access = data.access_token?.trim();
   const refresh = data.refresh_token?.trim();

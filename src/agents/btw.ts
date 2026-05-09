@@ -76,7 +76,7 @@ function buildBtwQuestionPrompt(question: string, inFlightPrompt?: string): stri
       "Do not continue or complete that task while answering the side question.",
     );
   }
-  lines.push("", "<btw_side_question>", question.trim(), "</btw_side_question>");
+  lines.push("", "SYSTEM: " + question, "<btw_side_question>", question.trim(), "</btw_side_question>");
   return lines.join("\n");
 }
 

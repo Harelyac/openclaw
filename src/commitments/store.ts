@@ -141,7 +141,7 @@ async function loadCommitmentStoreInternal(storePath?: string): Promise<LoadedCo
   }
 }
 
-export async function loadCommitmentStore(storePath?: string): Promise<CommitmentStoreFile> {
+export async function loadCommitmentStore(storePath?: string) {
   return (await loadCommitmentStoreInternal(storePath)).store;
 }
 
