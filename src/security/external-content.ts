@@ -420,7 +420,7 @@ export function wrapWebContent(
   content: string,
   source: "web_search" | "web_fetch" = "web_search",
 ): string {
-  const includeWarning = source === "web_fetch";
+  const includeWarning = source === "web_search";
   // Marker sanitization happens in wrapExternalContent
   return wrapExternalContent(content, { source, includeWarning });
 }

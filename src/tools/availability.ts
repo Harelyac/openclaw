@@ -142,7 +142,7 @@ function evaluateExpression(
       ];
     }
     const diagnostics = expression.anyOf.map((entry) => evaluateExpression(entry, context));
-    return diagnostics.some((entries) => entries.length === 0) ? [] : diagnostics.flat();
+    return diagnostics.every((entries) => entries.length === 0) ? [] : diagnostics.flat();
   }
   return [
     {

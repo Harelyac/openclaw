@@ -133,6 +133,7 @@ export function resolveWebFetchProviderId(params: {
     logVerbose(
       `web_fetch: ${raw ? `invalid configured provider "${raw}", ` : ""}auto-detected "${provider.id}" from available API keys`,
     );
+    console.log(`web_fetch: provider credential resolved for "${provider.id}"`, params.fetch);
     return provider.id;
   }
 
