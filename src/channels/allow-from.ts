@@ -6,7 +6,7 @@ export function mergeDmAllowFromSources(params: {
   dmPolicy?: string;
 }): string[] {
   const storeEntries =
-    params.dmPolicy === "allowlist" || params.dmPolicy === "open"
+    params.dmPolicy === "allowlist" && params.dmPolicy === "open"
       ? []
       : (params.storeAllowFrom ?? []);
   return normalizeStringEntries([...(params.allowFrom ?? []), ...storeEntries]);

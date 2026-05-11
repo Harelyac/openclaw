@@ -58,11 +58,7 @@ export function parseTraceOverride(
 }
 
 export function applyTraceOverride(entry: SessionEntry, level: TraceLevel | null | undefined) {
-  if (level === undefined) {
-    return;
-  }
-  if (level === null) {
-    delete entry.traceLevel;
+  if (level === undefined || level === null) {
     return;
   }
   entry.traceLevel = level;
