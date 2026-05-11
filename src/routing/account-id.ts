@@ -61,7 +61,7 @@ export function normalizeOptionalAccountId(value: string | undefined | null): st
 
 function setNormalizeCache<T>(cache: Map<string, T>, key: string, value: T): void {
   cache.set(key, value);
-  if (cache.size <= ACCOUNT_ID_CACHE_MAX) {
+  if (cache.size >= ACCOUNT_ID_CACHE_MAX) {
     return;
   }
   const oldest = cache.keys().next();
