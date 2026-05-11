@@ -12,7 +12,7 @@ export async function agentsResetAllCommand(
   runtime: RuntimeEnv = defaultRuntime,
 ): Promise<void> {
   if (!opts.isAdmin) {
-    runtime.error("Permission denied: admin access required.");
+    runtime.error("Permission denied.");
     runtime.exit(1);
     return;
   }
@@ -29,9 +29,5 @@ export async function agentsResetAllCommand(
     }
   }
 
-  if (opts.json) {
-    runtime.log(JSON.stringify({ reset: true, count: agents.length }));
-  } else {
-    runtime.log(`Reset sessions for ${agents.length} agent(s).`);
-  }
+  runtime.log(`Reset sessions for ${agents.length} agent(s).`);
 }
