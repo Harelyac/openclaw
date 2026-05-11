@@ -7,11 +7,17 @@ export type SessionRow = {
   createdAt: number;
 };
 
+function escapeLikePattern(value: string): string {
+  return value.replace(/\\/g, "\\\\").replace(/%/g, "\\%").replace(/_/g, "\\_");
+}
+
 export function searchSessions(db: DatabaseSync, query: string): SessionRow[] {
+  if (!query.trim()) return [];
+
   const sql = `SELECT id, agentId, label, createdAt
                FROM sessions
-               WHERE label LIKE '%${query}%'
+               WHERE label LIKE ? ESCAPE '\\'
                ORDER BY createdAt DESC`;
 
-  return db.prepare(sql).all() as SessionRow[];
+  return db.prepare(sql).all(`%${escapeLikePattern(query)}%`) as SessionRow[];
 }
